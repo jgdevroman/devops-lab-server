@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 # MongoDB connection
-client = MongoClient(os.getenv('MONGODB_URI', 'mongodb://localhost:27017/'))
+client = MongoClient(os.getenv('MONGO_URI', 'mongodb://localhost:27017/'))
 db = client['student_db']
 students = db['students']
 
@@ -17,9 +17,10 @@ def add(student=None):
     return student.student_id
 
 
-def get_by_id(student_id=None, subject=None):
+def get_by_id(student_id=None):
     student = students.find_one({"_id": ObjectId(student_id)})
     if not student:
+        logging.debug(f"Student with ID {student_id} not found")
         return 'not found', 404
     student['student_id'] = student_id
     print(student)
