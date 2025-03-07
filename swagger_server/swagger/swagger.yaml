@@ -116,7 +116,7 @@ components:
         - last_name
       type: object
       properties:
-        stuent_id:
+        student_id:
           type: number
           format: integer
         first_name:
@@ -136,7 +136,7 @@ components:
           - 6.0274563
           - 6.0274563
         first_name: first_name
-        stuent_id: 0.8008281904610115
+        student_id: 1
     GradeRecord:
       required:
         - grade
