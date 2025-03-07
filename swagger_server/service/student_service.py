@@ -18,17 +18,15 @@ def add(student=None):
 
 
 def get_by_id(student_id=None):
-    student = students.find_one({"_id": ObjectId(student_id)})
+    student = students.find_one({"_id": "{student_id}"})
     if not student:
-        logging.debug(f"Student with ID {student_id} not found")
         return 'not found', 404
-    student['student_id'] = student_id
     print(student)
     return student
 
 
 def delete(student_id=None):
-    result = students.delete_one({"_id": ObjectId(student_id)})
+    result = students.delete_one({"_id": "{student_id}"})
     if result.deleted_count == 0:
         return 'not found', 404
     return student_id
